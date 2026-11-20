@@ -1,0 +1,114 @@
+﻿用例编号,测试文件,测试函数,用例说明,结果,耗时(秒)
+,test_api.py,test_health,,通过,0.146
+,test_api.py,test_login_and_me,T-15：登录后 /auth/me 返回当前用户且不含密码哈希。,通过,0.471
+,test_api.py,test_protected_endpoint_requires_token,T-13：无 Token 访问受保护接口返回 401。,通过,0.120
+,test_api.py,test_student_cannot_access_admin_api,T-14：学生 Token 调用管理端接口返回 403。,通过,0.482
+,test_api.py,test_login_sets_token_expiry,,通过,0.660
+TC-A01,test_api_extended.py,test_health_and_contract,TC-A01：健康检查可用，契约版本为 OpenAPI 3.1。,通过,0.145
+TC-A02,test_api_extended.py,test_register_validation_and_duplicate,TC-A02：注册短密码返回 400；重复邮箱返回 409。,通过,0.481
+TC-A03,test_api_extended.py,test_login_failure_mapping,TC-A03：登录失败统一 400，不泄露账号存在性。,通过,0.485
+TC-A04,test_api_extended.py,test_token_failures_return_401,TC-A04：缺失、伪造、过期 Token 与停用账号均返回 401。,通过,0.671
+TC-A05,test_api_extended.py,test_role_permissions_on_api,TC-A05：跨角色访问接口返回 403。,通过,0.858
+TC-A06,test_api_extended.py,test_student_resume_api_flow,TC-A06：保存简历 → 查询 → 上传合法/非法附件。,通过,0.541
+TC-A07,test_api_extended.py,test_company_profile_and_job_api_flow,TC-A07：企业资料保存、未双审发布被拒、审核通过后发布/关闭/重开。,通过,1.009
+TC-A08,test_api_extended.py,test_job_review_and_visibility,TC-A08：待审职位学生不可见；通过并推荐后可见且置顶。,通过,1.371
+TC-A09,test_api_extended.py,test_application_api_flow_and_conflicts,TC-A09：投递成功、重复投递 409、非法流转 400。,通过,1.358
+TC-A10,test_api_extended.py,test_resume_file_download_permissions,TC-A10：企业只能下载本公司投递的简历附件。,通过,1.692
+TC-A11,test_api_extended.py,test_admin_api_queues_and_dashboard,TC-A11：管理端统计与待办结构完整。,通过,0.690
+TC-A12,test_api_extended.py,test_api_validation_and_routing_errors,TC-A12：404/405/422 与分页参数边界。,通过,0.502
+TC-A13,test_api_extended.py,test_cors_allows_streamlit_origin_only,TC-A13：CORS 仅放行 localhost:8501。,通过,0.128
+TC-A14,test_api_extended.py,test_saved_openapi_matches_live,TC-A14：仓库中的 openapi.json 与运行中的应用一致。,通过,0.120
+TC-A15,test_api_extended.py,test_invalid_review_decision_mapping,TC-A15：非法审核结论返回 400。,通过,0.839
+,test_app_smoke.py,test_anonymous_user_sees_login_form,T-11：未登录时进入登录页，页面包含登录表单。,通过,1.640
+,test_app_smoke.py,test_student_login_shows_student_home,T-12：学生登录后进入学生首页，页面无异常。,通过,0.815
+,test_app_smoke.py,test_company_pages_render,,通过,0.940
+,test_app_smoke.py,test_admin_pages_render,,通过,0.965
+,test_app_smoke.py,test_logout_clears_session,,通过,0.815
+,test_auth.py,test_register_and_login_student,,通过,0.479
+,test_auth.py,test_duplicate_email_is_rejected,,通过,0.470
+,test_auth.py,test_wrong_password_is_rejected,,通过,0.489
+,test_auth.py,test_inactive_account_is_rejected,,通过,0.474
+,test_auth.py,test_register_company_creates_pending_profile,,通过,0.313
+,test_auth.py,test_require_role_rejects_wrong_role,,通过,0.295
+,test_auth.py,test_require_role_returns_user,,通过,0.288
+,test_auth.py,test_create_admin,,通过,0.464
+TC-B01,test_boundary.py,test_password_length_boundary,TC-B01：密码 7 位拒绝，8 位通过。,通过,0.307
+TC-B02,test_boundary.py,test_invalid_email_formats[plain],TC-B02：明显非法的邮箱格式全部拒绝。,通过,0.110
+TC-B02,test_boundary.py,test_invalid_email_formats[a@b],TC-B02：明显非法的邮箱格式全部拒绝。,通过,0.113
+TC-B02,test_boundary.py,test_invalid_email_formats[a b@example.com],TC-B02：明显非法的邮箱格式全部拒绝。,通过,0.113
+TC-B02,test_boundary.py,test_invalid_email_formats[@example.com],TC-B02：明显非法的邮箱格式全部拒绝。,通过,0.110
+TC-B02,test_boundary.py,test_invalid_email_formats[a@@example.com],TC-B02：明显非法的邮箱格式全部拒绝。,通过,0.111
+TC-B03,test_boundary.py,test_email_is_case_insensitive,TC-B03：大小写不同的同一邮箱不能重复注册。,通过,0.462
+TC-B04,test_boundary.py,test_graduation_year_out_of_range[1999],TC-B04：毕业年份超出 2000-2100 拒绝。,通过,0.299
+TC-B04,test_boundary.py,test_graduation_year_out_of_range[2101],TC-B04：毕业年份超出 2000-2100 拒绝。,通过,0.310
+TC-B05,test_boundary.py,test_graduation_year_boundary_accepted[2000],TC-B05：毕业年份上下边界值可以保存。,通过,0.309
+TC-B05,test_boundary.py,test_graduation_year_boundary_accepted[2100],TC-B05：毕业年份上下边界值可以保存。,通过,0.321
+TC-B06,test_boundary.py,test_job_description_length_boundary,TC-B06：职位描述 19 字拒绝，20 字通过。,通过,0.324
+TC-B07,test_boundary.py,test_invalid_job_type_rejected,TC-B07：非法职位类型拒绝。,通过,0.311
+TC-B08,test_boundary.py,test_upload_size_boundaries,TC-B08：0 字节拒绝；正好 5 MB 通过；5 MB+1 拒绝。,通过,0.001
+TC-B09,test_boundary.py,test_upload_extension_case_and_double_extension,TC-B09：扩展名大小写不敏感；双扩展名按最后一个判断。,通过,0.001
+TC-B10,test_boundary.py,test_blank_resume_fields_rejected,TC-B10：纯空格字段视为未填写。,通过,0.291
+TC-B11,test_boundary.py,test_salary_is_optional,TC-B11：薪资可以为空。,通过,0.312
+TC-B12,test_boundary.py,test_long_text_is_stored_without_truncation,TC-B12：2000 字简介可完整保存。,通过,0.312
+TC-B13,test_boundary.py,test_sql_like_keyword_is_treated_as_data,TC-B13：SQL 注入风格关键词不会报错或破坏查询。,通过,0.316
+TC-K01,test_compatibility.py,test_python_version_compatible,TC-K01：Python 版本处于 Streamlit 1.67 支持区间。,通过,0.108
+TC-K02,test_compatibility.py,test_runtime_versions_match_requirements,TC-K02：锁定版本与当前环境安装版本一致。,通过,0.117
+TC-K03,test_compatibility.py,test_services_and_core_do_not_import_web_layers,TC-K03：services/core 不依赖 Streamlit 或 FastAPI。,通过,0.143
+TC-K04,test_compatibility.py,test_views_and_api_do_not_access_database_directly,TC-K04：表现层与 API 层不直接使用 sqlite3 / core.db。,通过,0.152
+TC-K05,test_compatibility.py,test_view_pages_are_small_enough,TC-K05：单个页面文件不超过 250 行。,通过,0.145
+TC-K06,test_compatibility.py,test_app_uses_official_navigation,TC-K06：入口使用官方 st.navigation + st.Page。,通过,0.107
+TC-K07,test_compatibility.py,test_views_do_not_render_raw_html,TC-K07：页面未使用 unsafe_allow_html，降低 XSS 风险。,通过,0.133
+TC-K08,test_compatibility.py,test_gitignore_covers_sensitive_files,TC-K08：忽略本地数据库、上传目录、环境变量与密钥。,通过,0.115
+TC-K09,test_compatibility.py,test_database_constraints_exist,TC-K09：投递唯一约束、状态 CHECK 与索引存在。,通过,0.115
+TC-K10,test_compatibility.py,test_timestamp_uses_china_timezone,TC-K10：时间戳为带 +08:00 的 ISO 8601 字符串。,通过,0.110
+TC-C01,test_concurrency.py,test_concurrent_duplicate_applications,TC-C01：8 个并发投递只能成功 1 次，不能出现数据库锁错误。,通过,0.832
+TC-C02,test_concurrency.py,test_concurrent_same_email_registration,TC-C02：同一邮箱并发注册只能成功 1 次。,通过,0.392
+TC-C03,test_concurrency.py,test_concurrent_admin_review_same_job,TC-C03：多个管理员并发审核同一职位，只能有一个审核生效。,通过,1.448
+TC-C04,test_concurrency.py,test_concurrent_status_transition_competition,TC-C04：同一投递被并发改为“进入面试”和“不合适”，只能一个成功。,通过,0.770
+TC-C05,test_concurrency.py,test_concurrent_job_creation,TC-C05：同一企业并发创建 8 个职位应全部成功。,通过,0.500
+TC-C06,test_concurrency.py,test_repeated_seed_like_writes_are_stable[1],TC-C06：重复的注册/写入操作不会破坏数据库。,通过,0.314
+TC-C06,test_concurrency.py,test_repeated_seed_like_writes_are_stable[2],TC-C06：重复的注册/写入操作不会破坏数据库。,通过,0.323
+TC-E01,test_exceptions.py,test_student_cannot_read_other_student_resume,TC-E01：学生查看他人简历被拒绝。,通过,0.479
+TC-E02,test_exceptions.py,test_company_cannot_read_other_company_profile,TC-E02：企业查看其他企业资料被拒绝。,通过,0.497
+TC-E03,test_exceptions.py,test_review_nonexistent_records,TC-E03：审核不存在的职位 / 企业 / 简历返回 NOT_FOUND。,通过,0.304
+TC-E04,test_exceptions.py,test_update_nonexistent_application,TC-E04：处理不存在的投递返回 NOT_FOUND。,通过,0.306
+TC-E05,test_exceptions.py,test_download_without_attachment,TC-E05：无附件时下载返回 NOT_FOUND；学生无权下载返回 FORBIDDEN。,通过,0.733
+TC-E06,test_exceptions.py,test_apply_nonexistent_or_closed_job,TC-E06：投递不存在或已关闭职位被拒绝。,通过,0.726
+TC-E07,test_exceptions.py,test_close_closed_job_is_invalid_state,TC-E07：重复关闭职位返回 INVALID_STATE。,通过,0.321
+TC-E08,test_exceptions.py,test_role_mismatch_is_forbidden,TC-E08：跨角色调用服务被拒绝。,通过,0.477
+TC-E09,test_exceptions.py,test_inactive_account_cannot_login,TC-E09：账号停用后无法登录。,通过,0.470
+TC-E10,test_exceptions.py,test_login_error_message_does_not_leak_account,TC-E10：密码错误与账号不存在返回完全相同的提示。,通过,0.452
+TC-P01,test_performance.py,test_search_with_filters_under_one_second,TC-P01：1000 条职位下，关键词+城市+类型筛选 < 1 秒。,通过,0.329
+TC-P02,test_performance.py,test_search_without_filters_under_one_second,TC-P02：1000 条职位下，无条件列表（推荐+时间排序）< 1 秒。,通过,0.325
+TC-P03,test_performance.py,test_dashboard_counts_under_one_second,TC-P03：1000 条职位下，管理端 6 项统计 < 1 秒。,通过,0.501
+TC-P04,test_performance.py,test_apply_under_one_second_with_many_jobs,TC-P04：1000 条职位下，投递耗时 < 1 秒。,通过,0.733
+TC-P05,test_performance.py,test_candidate_query_under_one_second,TC-P05：1000 条职位下，企业候选人查询 < 1 秒。,通过,0.761
+,test_security.py,test_hash_and_verify_password,,通过,0.323
+,test_security.py,test_verify_wrong_password,,通过,0.340
+,test_security.py,test_hash_does_not_contain_plaintext,,通过,0.161
+,test_security.py,test_validate_upload_rejects_invalid_extension,,通过,0.001
+,test_security.py,test_validate_upload_rejects_large_file,,通过,0.001
+,test_security.py,test_save_upload_uses_uuid_filename,,通过,0.006
+,test_security.py,test_resolve_upload_path_blocks_traversal,,通过,0.002
+,test_security.py,test_resolve_upload_path_accepts_normal_file,,通过,0.003
+TC-D01,test_seed_data.py,test_seed_volume_and_diversity,TC-D01：至少 20 家公司、50 份简历、30 个岗位，且覆盖多行业与多类型。,通过,0.631
+TC-D02,test_seed_data.py,test_seed_status_coverage,TC-D02：简历、职位、投递覆盖所有业务状态。,通过,0.651
+TC-D03,test_seed_data.py,test_seed_relationships_are_consistent,TC-D03：职位归属、投递关联、快照与审核记录逻辑一致。,通过,0.648
+TC-D04,test_seed_data.py,test_seed_is_idempotent_and_preserves_real_data,TC-D04：重复导入数量稳定，且不删除真实账号。,通过,1.343
+,test_services.py,test_save_resume_sets_pending,,通过,0.303
+,test_services.py,test_apply_rejected_when_resume_not_verified,T-05：未核查简历投递必须被拒绝。,通过,0.511
+,test_services.py,test_apply_saves_snapshot_and_rejects_duplicate,T-06：正常投递保存快照，重复投递被拒绝。,通过,0.543
+,test_services.py,test_company_cannot_access_other_company_application,T-07：企业不能查看或处理其他公司职位的投递。,通过,0.738
+,test_services.py,test_invalid_application_status_transition,T-08：不允许跳过中间状态或修改终态。,通过,0.594
+,test_services.py,test_reject_requires_feedback,,通过,0.542
+,test_services.py,test_non_admin_cannot_review,T-09：非管理员调用审核一律拒绝。,通过,0.535
+,test_services.py,test_review_only_handles_pending,T-09：已处理的记录不能被二次审核覆盖。,通过,0.512
+,test_services.py,test_company_license_review_requires_note_on_reject,,通过,0.478
+,test_services.py,test_dashboard_counts,,通过,0.677
+,test_services.py,test_search_jobs_only_approved_and_featured_first,,通过,0.537
+,test_services.py,test_save_resume_resets_verified_to_pending,,通过,0.337
+,test_services.py,test_attach_resume_file_saves_and_resets_status,,通过,0.351
+,test_services.py,test_create_job_requires_approved_company,,通过,0.294
+,test_services.py,test_company_job_lifecycle,,通过,0.791
+,test_services.py,test_set_featured_requires_approved_job,,通过,0.493
+,test_services.py,test_review_resume_verified,,通过,0.506

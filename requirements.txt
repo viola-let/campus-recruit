@@ -1,0 +1,20 @@
+# ============================================================
+# 运行时依赖（唯一原则：只列 Python 进程真正需要的包）
+# 版本规则：运行时依赖使用 == 精确锁定，保证任何机器安装结果一致
+# 依据：Streamlit 官方安装文档 https://docs.streamlit.io/get-started/installation/command-line
+# ============================================================
+
+# Web 应用框架（2026-11-05 发布，当前官方最新稳定版）
+streamlit==1.67.0
+
+# REST API 运行层（与 Streamlit 共用 services/ 业务核心）
+fastapi==0.163.2
+uvicorn==0.54.0
+pyjwt==2.15.1
+
+# 说明：
+# 1. 数据存储使用 Python 标准库 sqlite3，无需额外依赖。
+# 2. 密码哈希使用标准库 hashlib / hmac，无需额外依赖。
+# 3. 文件类型与路径校验使用标准库 pathlib / uuid，无需额外依赖。
+# 4. Streamlit 与 FastAPI 是两个独立进程，共用 services/ 与 SQLite。
+# 5. FastAPI 自动生成 OpenAPI 3.1 文档（/openapi.json 与 /docs）。

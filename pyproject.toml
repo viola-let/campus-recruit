@@ -1,0 +1,22 @@
+# ============================================================
+# 工程工具配置（不参与打包，仅承载 pytest / ruff 的通用配置）
+# ============================================================
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
+
+[tool.ruff]
+# 业界通用的格式化行宽（与 Black 默认一致）
+line-length = 88
+# 兼容最低支持的 Python 版本（Streamlit 1.67 支持 3.11-3.15）
+target-version = "py311"
+
+[tool.ruff.lint]
+# E/W: PEP 8 风格错误；F: 逻辑错误；I: import 排序
+select = ["E", "F", "I"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
