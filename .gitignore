@@ -26,6 +26,11 @@ uploads/licenses/*
 !uploads/licenses/.gitkeep
 uploads/resumes/*
 !uploads/resumes/.gitkeep
+uploads/logos/*
+!uploads/logos/.gitkeep
+
+# ---- 内部文档（D-03：不提交）----
+docs/内部文档/
 
 # ---- 编辑器 / 操作系统 ----
 .vscode/
